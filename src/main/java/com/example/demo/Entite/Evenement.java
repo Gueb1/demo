@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Evenement {
@@ -15,6 +17,14 @@ public class Evenement {
 	private Long Id;
 	private String Titre;
 	private Date Date;
+	
+	// Relation ManyToOne avec admin
+    @ManyToOne
+    @JoinColumn(name = "Administrateur_id") // jointure dans la table admin
+    private Administrateur Administrateur;
+	
+	
+	
 	public Long getId() {
 		return Id;
 	}

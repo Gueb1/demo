@@ -1,55 +1,43 @@
 package com.example.demo.Entite;
 
+import java.util.Collection;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "administrateurs")  // Nom de la table en base de données
-public class Administrateur {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class Administrateur extends Utilisateur{
 
-    private String nom;
-    private String email;
+    
 
-    // Getters et Setters
-    public Long getId() {
-        return id;
-    }
+    private String type;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+ // Relation OneToMany avec Evenement
+    @OneToMany(mappedBy = "Administrateur") // "projetfreelance
+    private Collection<Evenement> Evenement;
+    
+    
+    
+	public String getType() {
+		return type;
+	}
 
-    public String getNom() {
-        return nom;
-    }
+	public void setType(String type) {
+		this.type = type;
+	}
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    // Constructeur avec paramètres
-    public Administrateur(Long id, String nom, String email) {
-        this.id = id;
-        this.nom = nom;
-        this.email = email;
-    }
-
-    // Constructeur vide
     public Administrateur() {
     }
+
+	public Administrateur(long id, String nom, String prenom, String email, String statut, String password,
+			String type) {
+		super(id, nom, prenom, email, statut, password);
+		this.type = type;
+	}
 }

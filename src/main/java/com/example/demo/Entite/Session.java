@@ -6,46 +6,95 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 @Entity
 public class Session {
 	@Id
 	@GeneratedValue(strategy =GenerationType.AUTO)
 
-	private Long Id;
-	private String Nom;
-	private Date DateDebut ;
-	private Date DateFin;
+	private Long id;
+	private String titre;
+	private String statut;
+	private Date dateDebut ;
+	private Date dateFin;
+	
+	@ManyToOne
+    @JoinColumn(name = "Formation_id")
+    private Formation Formation;
+	
+	
+
 	public Long getId() {
-		return Id;
+		return id;
 	}
+
+
+
 	public void setId(Long id) {
-		Id = id;
+		this.id = id;
 	}
-	public String getNom() {
-		return Nom;
+
+
+	public String getTitre() {
+		return titre;
 	}
-	public void setNom(String nom) {
-		Nom = nom;
+
+
+
+	public void setTitre(String titre) {
+		this.titre = titre;
 	}
+
+
+
+	public String getStatut() {
+		return statut;
+	}
+
+
+
+	public void setStatut(String statut) {
+		this.statut = statut;
+	}
+
+
+
 	public Date getDateDebut() {
-		return DateDebut;
+		return dateDebut;
 	}
+
+
+
 	public void setDateDebut(Date dateDebut) {
-		DateDebut = dateDebut;
+		this.dateDebut = dateDebut;
 	}
+
+
+
 	public Date getDateFin() {
-		return DateFin;
+		return dateFin;
 	}
+
+
+
 	public void setDateFin(Date dateFin) {
-		DateFin = dateFin;
+		this.dateFin = dateFin;
 	}
-	public Session(Long id, String nom, Date dateDebut, Date dateFin) {
+
+
+
+	public Session(Long id, String titre, String statut, Date dateDebut, Date dateFin) {
 		super();
-		Id = id;
-		Nom = nom;
-		DateDebut = dateDebut;
-		DateFin = dateFin;
+		this.id = id;
+		this.titre = titre;
+		this.statut = statut;
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
 	}
+
+
+
 	public Session() {
 		super();
 	}

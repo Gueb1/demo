@@ -2,10 +2,14 @@ package com.example.demo.Repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import com.example.demo.Entite.Candidat;
 
+import com.example.demo.Entite.Formation;
 @Repository
-public interface CandidatRepository extends JpaRepository<Candidat, Long> {
+public interface FormationRepository extends JpaRepository<Formation, Long> {
 
-	Candidat findByEmail(String email);
+	Formation findByName(String name);
+
+
+
+
 }

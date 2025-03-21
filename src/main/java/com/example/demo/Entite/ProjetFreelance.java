@@ -1,11 +1,14 @@
 package com.example.demo.Entite;
 
 import java.sql.Date;
-
+import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 @Entity
 public class ProjetFreelance {
 	@Id
@@ -15,6 +18,19 @@ public class ProjetFreelance {
 	private Date DateDebut ;
 	private Date DateFin;
 	private String Contenue;
+	
+	// Relation ManyToOne avec chefprojet
+    @ManyToOne
+    @JoinColumn(name = "ChefProjet_id") // jointure dans la table chefprojet
+    private ChefProjet ChefProjet;
+    
+ // Relation OneToMany avec Planification
+    @OneToMany(mappedBy = "ProjetFreelance") // "projetfreelance
+    private Collection<Planification> Planification;
+    
+	
+	
+	
 	public Long getId() {
 		return Id;
 	}

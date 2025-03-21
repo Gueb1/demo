@@ -14,7 +14,7 @@ import com.example.demo.Repository.FormateurRepository;
 public class FormateurController {
 
     @Autowired
-    private FormateurRepository formateurrepos;
+    FormateurRepository formateurrepos;
 
     @PostMapping("ajoutformateur")
     public String ajoutformateur(@RequestBody Formateur formateur) {

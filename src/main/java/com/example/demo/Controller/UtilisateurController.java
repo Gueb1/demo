@@ -10,7 +10,7 @@ import com.example.demo.Entite.Utilisateur;
 import com.example.demo.Repository.UtilisateurRepository;
 
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
-@EnableSwagger2
+
 @RestController
 @RequestMapping("user")
 public class UtilisateurController {

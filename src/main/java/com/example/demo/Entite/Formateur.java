@@ -1,45 +1,40 @@
 package com.example.demo.Entite;
 
+import java.util.Collection;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 
-public class Formateur {
-	@javax.persistence.Id
-	@GeneratedValue(strategy =GenerationType.AUTO)
-	private Long Id;
-	private String Nom;
-	private String Email;
-	public Long getId() {
-		return Id;
+public class Formateur extends Utilisateur{
+	
+
+	private String specialite;
+	
+	// Relation OneToMany avec Formation
+	@OneToMany(mappedBy = "Formateur")
+    private Collection <Formation> Formation;
+	
+	public String getSpecialite() {
+		return specialite;
 	}
-	public void setId(Long id) {
-		Id = id;
+	public void setSpecialite(String specialite) {
+		this.specialite = specialite;
 	}
-	public String getNom() {
-		return Nom;
-	}
-	public void setNom(String nom) {
-		Nom = nom;
-	}
-	public String getEmail() {
-		return Email;
-	}
-	public void setEmail(String email) {
-		Email = email;
-	}
-	public Formateur(Long id, String nom, String email) {
-		super();
-		Id = id;
-		Nom = nom;
-		Email = email;
+	
+	public Formateur(long id, String nom, String prenom, String email, String statut, String password,
+			String specialite) {
+		super(id, nom, prenom, email, statut, password);
+		this.specialite = specialite;
 	}
 	public Formateur() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
-
 	
 	
 	
